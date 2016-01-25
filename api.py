@@ -1,4 +1,5 @@
 from flask import Blueprint, request
+import sql
 
 # Create Blueprint
 api = Blueprint("api", __name__)
@@ -8,6 +9,12 @@ api = Blueprint("api", __name__)
 def add_bill():
     if request.method != "POST":
         return "Whoops, this page only takes POST requests."
+
+    bill_name = request.form.get("bill_name")
+    pay_date = request.form.get("pay_date")
+    pay_amount = request.form.get("pay_amount")
+
+    sql.add("bills", (bill_name, pay_date, pay_amount))
 
 # Add Spend
 @api.route("/add_spend", methods=["GET", "POST"])

@@ -1,8 +1,17 @@
 <html>
     <head>
-        <title>Budget</title>
+        <title>Add Bill</title>
     </head>
     <body>
-        This is where my budget application will go!
+        <form action="/api/add_bill" method="post">
+            Name: <br>
+            <input type="text" name="bill_name"><br>
+            Day of Month Paid: <br>
+            <input type="text" name="pay_date"><br>
+            Amount: <br>
+            <input type="text" name="pay_amount"><br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
     </body>
 </html>
