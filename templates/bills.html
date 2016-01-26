@@ -1,8 +1,14 @@
 <html>
     <head>
-        <title>Budget</title>
+        <title>Bills</title>
     </head>
     <body>
-        This is where my budget application will go!
+        {% if bills %}
+        {% for bill in bills %}
+        <b>{{ bill[1] }}</b>: ${{ bill[3] }}<br>
+        {% endfor %}
+        {% else %}
+        <b>There are no bills.</b>
+        {% endif %}
     </body>
 </html>

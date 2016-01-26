@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+from sql import select
 
 # Create Flask app
 app = Flask(__name__)
@@ -19,7 +20,9 @@ def index():
 # Bills page
 @app.route("/bills")
 def bills():
-    return render_template("bills.html")
+    bills = select("bills")
+    print bills
+    return render_template("bills.html", bills=bills)
 
 # Add Bill page
 @app.route("/bills/add")
@@ -46,7 +49,7 @@ def spending_add():
 # Edit Spending page
 @app.route("/spending/edit")
 def spending_edit():
-    return render_tempalte("spending_edit.html")
+    return render_template("spending_edit.html")
 
 # --------------- ACCOUNTS --------------- #
 
