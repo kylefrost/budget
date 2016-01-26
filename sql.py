@@ -26,7 +26,7 @@ def edit():
     db = MySQLdb.connect(host=config.database.HOST, user=config.database.USER, passwd=config.database.PASSWD, db=config.database.DB)
     pass
 
-def remove():
+def delete():
     db = MySQLdb.connect(host=config.database.HOST, user=config.database.USER, passwd=config.database.PASSWD, db=config.database.DB)
     pass
 
@@ -35,7 +35,9 @@ def select(table_name):
     cur = db.cursor()
 
     if table_name == "spending":
-        pass
+        cur.execute("SELECT * FROM spending;")
+        db.close()
+        return cur.fetchall()
 
     elif table_name == "bills":
         cur.execute("SELECT * FROM bills;")
@@ -43,5 +45,6 @@ def select(table_name):
         return cur.fetchall()
 
     elif table_name == "accounts":
-        pass
-
+        cur.execute("SELECT * FROM accounts;")
+        db.close()
+        return cur.fetchall()

@@ -1,8 +1,15 @@
 <html>
     <head>
-        <title>Budget</title>
+        <title>Accounts</title>
+        {% include "head.html" %}
     </head>
     <body>
-        This is where my budget application will go!
+        {% if accounts %}
+        {% for account in accounts %}
+        <b>{{ account[1] }}</b>: ${{ account[2] }}<br>
+        {% endfor %}
+        {% else %}
+        <b>There are no accounts.</b>
+        {% endif %}
     </body>
 </html>

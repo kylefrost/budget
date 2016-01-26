@@ -1,8 +1,29 @@
 <html>
     <head>
-        <title>Budget</title>
+        <title>Add Spending</title>
+        {% include "head.html" %}
     </head>
     <body>
-        This is where my budget application will go!
+        <form action="/api/add_spend" method="post">
+            Description: <br>
+            <input type="text" name="spend_description"><br>
+            Date Spent: <br>
+            <input type="text" name="spend_date"><br>
+            Amount: <br>
+            <input type="text" name="spend_amount"><br>
+            {% if accounts %}
+            Account Used:<br>
+            <select name="account_used">
+                {% for account in accounts %}
+                <option value="{{ account[0] }}">{{ account[1] }}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <input type="hidden" name="account_used" value="0">
+            {% endif %}
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
     </body>
 </html>

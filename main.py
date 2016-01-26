@@ -21,7 +21,6 @@ def index():
 @app.route("/bills")
 def bills():
     bills = select("bills")
-    print bills
     return render_template("bills.html", bills=bills)
 
 # Add Bill page
@@ -39,12 +38,14 @@ def bills_edit():
 # Spending page
 @app.route("/spending")
 def spending():
-    return render_template("spending.html")
+    spending = select("spending")
+    return render_template("spending.html", spending=spending)
 
 # Add Spending page
 @app.route("/spending/add")
 def spending_add():
-    return render_template("spending_add.html")
+    accounts = select("accounts")
+    return render_template("spending_add.html", accounts=accounts)
 
 # Edit Spending page
 @app.route("/spending/edit")
@@ -56,7 +57,8 @@ def spending_edit():
 # Accounts page
 @app.route("/accounts")
 def accounts():
-    return render_template("accounts.html")
+    accounts = select("accounts")
+    return render_template("accounts.html", accounts=accounts)
 
 # Add Account page
 @app.route("/accounts/add")

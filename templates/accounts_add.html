@@ -1,8 +1,16 @@
 <html>
     <head>
-        <title>Budget</title>
+        <title>Add Account</title>
+        {% include "head.html" %}
     </head>
     <body>
-        This is where my budget application will go!
+        <form action="/api/add_account" method="post">
+            Account Name: <br>
+            <input type="text" name="account_name"><br>
+            Current Balance: <br>
+            <input type="text" name="account_balance"><br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
     </body>
 </html>

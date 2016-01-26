@@ -1,9 +1,10 @@
 <html>
     <head>
         <title>Add Bill</title>
+        {% include "head.html" %}
     </head>
     <body>
-        <form action="/api/add_bill" method="post">
+        <form id="bill_add_form">
             Name: <br>
             <input type="text" name="bill_name"><br>
             Day of Month Paid: <br>
@@ -14,4 +15,23 @@
             <input type="submit" value="Submit">
         </form>
     </body>
+    <script>
+        // TODO: Move this logic to seperate JavaScript function for reuse on other pages
+        let form = $("#bill_add_form");
+
+        form.on('submit', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "/api/add_bill",
+                type: "POST",
+                data: form.serialize()
+            }).done(function(data) {
+                if (data === "0") {
+                    console.log(data);
+                    $("body").html("Success.");
+                }
+            });
+        });
+    </script>
 </html>
